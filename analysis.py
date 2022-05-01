@@ -35,15 +35,12 @@ class Analysis:
 
         df['Difference'] = np.subtract(df['{}'.format(self.state)], df['National Average'])
         df['Analysis'] = np.where(df['{}'.format(self.state)] < df['National Average'], "{} is below than the National Average".format(self.state), "{} is greater than the National Average".format(self.state))
-
-        df.to_csv('NC.csv')
+        
         return df
 
 def main(state):
     ana = Analysis(pd.read_csv('data/Energy Census and Economic Data US 2010-2014.csv'), state)
     print(ana.process())
-
-
 
 if __name__ == '__main__':
     state = 'Maryland'
