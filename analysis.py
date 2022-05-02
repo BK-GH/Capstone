@@ -4,9 +4,9 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 10000)
 pd.set_option('display.max_colwidth', None)
 import numpy as np
-import warnings
-warnings.simplefilter(action='ignore', category=FutureWarning)
 
+# The class takes in a dataframe and a state name, and returns a dataframe with the state's metrics compared to the
+# national average
 class Analysis:
     def __init__(self, df, state):
         self.df = df
@@ -45,3 +45,4 @@ def main(state):
 if __name__ == '__main__':
     state = 'Maryland'
     main(state)
+
