@@ -3,6 +3,7 @@ pd.set_option('display.max_rows', 5000)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 10000)
 import warnings
+import numpy as np
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 Energy_census = pd.read_csv('data/Energy Census and Economic Data US 2010-2014.csv')
@@ -52,5 +53,52 @@ merger = merger.merge(Energy_census, left_on='State', right_on='StateCodes', how
 merger = merger.drop(['StateCodes', 'State_x', 'State_y', 'Region', 'Division', 'Coast', 'Great Lakes'], axis=1)
 merger = merger.groupby(['Zone']).mean()
 
+
+
+
+a  = np.arange(0,len(merger.columns)) // 5*5
+merger = merger.groupby(a,axis = 1).mean()
+
+merger.columns =['Total Energy Consumption',
+'Total Energy Production',
+'Total Energy Expenditures',
+'Total Energy Average Price',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Total Biomass Consumption',
+'Total Coal Consumption' ,
+'Total Coal Production' ,
+'Total Coal Expenditures' ,
+'Coal Average Price' ,
+'Total Electricity Consumption',
+'Total Electricity Expenditures',
+'Electricity Average Price' ,
+'Total Fossil Fuels Consumption',
+'Total Geothermal Energy Net Generation',
+'Total Hydropower Consumption' ,
+'Total Hydropower Net Generation',
+'Total Natural Gas Consumption' ,
+'Total Natural Gas Expenditures',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this',
+'Delete this' ]
+
 print(merger)
+
+
 
