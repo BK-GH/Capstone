@@ -50,10 +50,11 @@ for ind,row in Energy_census.iterrows():
         }, index = [0]), ignore_index = True)
 
 merger = merger.merge(Energy_census, left_on='State', right_on='StateCodes', how='left')
-merger = merger.drop(['StateCodes', 'State_x', 'State_y', 'Region', 'Division', 'Coast', 'Great Lakes'], axis=1)
+merger = merger.drop(['StateCodes', 'State_x', 'State_y', 'Region', 'Division', 'Coast', 'Great Lakes','TotalC10-11' , 'TotalC11-12' , 'TotalC12-13'  ,'TotalC13-14'  ,'TotalP10-11'  ,'TotalP11-12' , 'TotalP12-13'  ,'TotalP13-14' , 'TotalE10-11' , 'TotalE11-12'  ,'TotalE12-13'  ,'TotalE13-14' , 'TotalPrice10-11' , 'TotalPrice11-12' , 'TotalPrice12-13'  ,'TotalPrice13-14'
+], axis=1)
 merger = merger.groupby(['Zone']).mean()
 
-
+print(merger)
 
 
 a  = np.arange(0,len(merger.columns)) // 5*5
@@ -63,10 +64,6 @@ merger.columns =['Total Energy Consumption',
 'Total Energy Production',
 'Total Energy Expenditures',
 'Total Energy Average Price',
-'Delete this',
-'Delete this',
-'Delete this',
-'Delete this',
 'Total Biomass Consumption',
 'Total Coal Consumption' ,
 'Total Coal Production' ,
