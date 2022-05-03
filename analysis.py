@@ -5,8 +5,8 @@ pd.set_option('display.width', 10000)
 pd.set_option('display.max_colwidth', None)
 import numpy as np
 
-# The class takes in a dataframe and a state name, and returns a dataframe with the state's metrics compared to the
-# national average
+# The Analysis class takes in a dataframe and a state name and returns a dataframe with the state's metrics compared to
+# the national average
 class Analysis:
     def __init__(self, df, state):
         self.df = df
