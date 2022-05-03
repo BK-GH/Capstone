@@ -25,6 +25,7 @@ fig.update_layout(
    title_text = 'State Rankings', # Create a Title
    geo_scope='usa',  # Plot only the USA instead of globe
 )
+
 fig.write_image("Vis/cbecs.png")
 
 
