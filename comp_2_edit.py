@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 pd.set_option('display.max_rows', 5000)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 10000)
@@ -54,11 +55,11 @@ merger = merger.drop(['StateCodes', 'State_x', 'State_y', 'Region', 'Division', 
 ], axis=1)
 merger = merger.groupby(['Zone']).mean()
 
-print(merger)
+#print(merger)
 
 
 a  = np.arange(0,len(merger.columns)) // 5*5
-merger = merger.groupby(a,axis = 1).mean()
+merger = merger.groupby(a,axis = 1).mean().round(2)
 
 merger.columns =['Total Energy Consumption',
 'Total Energy Production',
@@ -95,7 +96,17 @@ merger.columns =['Total Energy Consumption',
 'Delete this',
 'Delete this' ]
 
+merger = merger.drop(['Delete this'], axis=1)
+
+
+idx = 0
+new_col = [1, 2, 3, 4]
+merger.insert(loc=idx, column='Zones', value=new_col)
 print(merger)
 
 
-
+ax =merger.plot(x="Zones", y=['Total Energy Consumption','Total Biomass Consumption'], kind="bar",figsize=(9,10))
+ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
+ax.set(xlabel='Total Electricity Consumption', ylabel='Billion BTU')
+plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+plt.show()
