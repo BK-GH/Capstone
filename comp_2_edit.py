@@ -69,10 +69,10 @@ merger.columns =['Total Energy Consumption',
 'Total Coal Consumption' ,
 'Total Coal Production' ,
 'Total Coal Expenditures' ,
-'Coal Average Price' ,
+'Total Coal Average Price' ,
 'Total Electricity Consumption',
 'Total Electricity Expenditures',
-'Electricity Average Price' ,
+'Total Electricity Average Price' ,
 'Total Fossil Fuels Consumption',
 'Total Geothermal Energy Net Generation',
 'Total Hydropower Consumption' ,
@@ -105,8 +105,26 @@ merger.insert(loc=idx, column='Zones', value=new_col)
 print(merger)
 
 
-ax =merger.plot(x="Zones", y=['Total Energy Consumption','Total Biomass Consumption'], kind="bar",figsize=(9,10))
+ax = merger.plot(x="Zones", y=['Total Energy Consumption','Total Biomass Consumption', 'Total Coal Consumption', 'Total Electricity Consumption', 'Total Fossil Fuels Consumption', 'Total Hydropower Consumption', 'Total Natural Gas Consumption'], kind="bar",figsize=(9,10))
 ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
-ax.set(xlabel='Total Electricity Consumption', ylabel='Billion BTU')
+ax.set(xlabel='Zones', ylabel='Billion BTU')
+plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+plt.show()
+
+ax = merger.plot(x="Zones", y=['Total Energy Production','Total Coal Production', ], kind="bar",figsize=(9,10))
+ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
+ax.set(xlabel='Zones', ylabel='Billion BTU')
+plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+plt.show()
+
+ax = merger.plot(x="Zones", y=['Total Energy Expenditures','Total Coal Expenditures', 'Total Electricity Expenditures', 'Total Natural Gas Expenditures'], kind="bar",figsize=(9,10))
+ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
+ax.set(xlabel='Zones', ylabel='Billion BTU')
+plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+plt.show()
+
+ax = merger.plot(x="Zones", y=['Total Energy Average Price','Total Coal Average Price', 'Total Electricity Average Price', ], kind="bar",figsize=(9,10))
+ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
+ax.set(xlabel='Zones', ylabel='Price')
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 plt.show()
