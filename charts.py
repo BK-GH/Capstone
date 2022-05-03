@@ -28,12 +28,11 @@ fig.update_layout(
 
 fig.write_image("Vis/cbecs.png")
 
-
 df = pd.read_csv('data/Five_states.csv')
 
 Totalc = df.loc[:4]
 
-
+# Creating a bar graph of the total energy consumption of the five states.
 ax =Totalc.plot(x="Energy Source", y=["Maine", 'Nebraska', 'Maryland',"North Carolina", 'Florida',"National Average"], kind="bar",figsize=(9,10))
 ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
 ax.set(xlabel='Total Energy Consumption', ylabel='Billion BTU')
@@ -42,7 +41,7 @@ plt.savefig('Vis/total_energy_production.png', bbox_extra_artists=(ax,), bbox_in
 
 Totalp = df.loc[15:18]
 
-
+# Creating a bar graph of the total energy consumption of the five states.
 ax =Totalp.plot(x="Energy Source", y=["Maine", 'Nebraska', 'Maryland',"North Carolina", 'Florida',"National Average"], kind="bar",figsize=(9,10))
 ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
 ax.set(xlabel='Total energy average price', ylabel='Billion BTU')
@@ -53,6 +52,7 @@ plt.show()
 
 HydroC = df.loc[92:95]
 
+# Creating a bar graph of the total energy consumption of the five states.
 ax =HydroC.plot(x="Energy Source", y=["Maine", 'Nebraska', 'Maryland',"North Carolina", 'Florida',"National Average"], kind="bar",figsize=(9,10))
 ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
 ax.set(xlabel='Total Hydropower Consumption', ylabel='Billion BTU')
@@ -60,15 +60,12 @@ plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 plt.savefig('Vis/total_hydropower_consumption.png', bbox_extra_artists=(ax,), bbox_inches='tight')
 plt.show()
 
-
 ElecE = df.loc[62:65]
-ax =ElecE.plot(x="Energy Source", y=["Maine", 'Nebraska', 'Maryland',"North Carolina", 'Florida',"National Average"], kind="bar",figsize=(9,10))
+
+# This is creating a bar graph of the total electricity consumption of the five states.
+ax = ElecE.plot(x="Energy Source", y=["Maine", 'Nebraska', 'Maryland',"North Carolina", 'Florida',"National Average"], kind="bar",figsize=(9,10))
 ax.set_xticklabels(ax.get_xticklabels(),rotation = 0)
 ax.set(xlabel='Total Electricity Consumption', ylabel='Billion BTU')
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 plt.savefig('Vis/total_electricity_consumption.png', bbox_extra_artists=(ax,), bbox_inches='tight')
 plt.show()
-
-
-
-

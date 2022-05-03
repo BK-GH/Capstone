@@ -9,10 +9,21 @@ import numpy as np
 # the national average
 class Analysis:
     def __init__(self, df, state):
+        """
+        The function takes in a dataframe and a state and returns a dataframe with the state's data
+
+        :param df: The dataframe that contains the data for the state
+        :param state: The state you want to get the data for
+        """
         self.df = df
         self.state = state
 
     def process(self):
+        """
+        The function takes in a state and a dataframe, and returns a dataframe with the state's metrics compared to the
+        national average
+        :return: A dataframe with the state's metrics and the national average for each metric.
+        """
         self.df = self.df[:-1]
         df2 = self.df.drop(columns=['StateCodes','State', 'Region','Division', 'Coast','Great Lakes'])
         col_names = list(df2)
@@ -39,6 +50,11 @@ class Analysis:
         return df
 
 def main(state):
+    """
+    It takes a state as input, reads in the data, and then runs the analysis
+
+    :param state: The state you want to analyze
+    """
     ana = Analysis(pd.read_csv('data/Energy Census and Economic Data US 2010-2014.csv'), state)
     print(ana.process())
 
